@@ -24,7 +24,7 @@
             </h2>
             @yield('container')
         </main>
-        <footer class="text-gray-400 text-center font-bold">
+        <footer class="text-gray-400 text-center font-bold mt-5">
             @ Devstragran - All rights reserved {{ now()->year }}
             {{-- @php
                 echo date('Y');

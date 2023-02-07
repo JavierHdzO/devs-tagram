@@ -7,9 +7,9 @@
 @section('container')
     <div class="md:flex">
         <div class="md:w-1/2">
-            <p>Image here</p>
+            <img src="{{ asset('img/register.jpg') }}" alt="Register Image">
         </div>
-        <div class="md:w-1/2">
+        <div class="md:w-4/12 md:justify-center bg-gray-300 p-6 rounded-lg shadow-lg shadow-white">
             <form action="">
                 <div class="mb-5">
                     <label id="name" class="mb-2 block uppercase text-gray-500 font-bold" >
@@ -20,7 +20,7 @@
                         name="name" 
                         id="name" 
                         placeholder="Name"
-                        class="border p-3 w-4/6 rounded-md"
+                        class="border p-3 w-full rounded-md"
                         >
                 </div>
                 <div class="mb-5">
@@ -32,7 +32,7 @@
                         name="username" 
                         id="username" 
                         placeholder="Username"
-                        class="border p-3 w-4/6 rounded-md"
+                        class="border p-3 w-full rounded-md"
                         >
                 </div>
                 <div class="mb-5">
@@ -44,7 +44,7 @@
                         name="email" 
                         id="email" 
                         placeholder="Email"
-                        class="border p-3 w-4/6 rounded-md"
+                        class="border p-3 w-full rounded-md"
                         >
                 </div>
                 <div class="mb-5">
@@ -56,20 +56,26 @@
                         name="password" 
                         id="password" 
                         placeholder="Password"
-                        class="border p-3 w-4/6 rounded-md"
+                        class="border p-3 w-full rounded-md"
                         >
                 </div>
                 <div class="mb-5">
-                    <label id="password_conf" class="mb-2 block uppercase text-gray-500 font-bold" >
+                    <label id="password_confirmation" class="mb-2 block uppercase text-gray-500 font-bold" >
                         Password
                     </label>
                     <input 
                         type="password" 
-                        name="password_conf" 
-                        id="password_conf" 
+                        name="password_confirmation" 
+                        id="password_confirmation" 
                         placeholder="Confirm Password"
-                        class="border p-3 w-4/6 rounded-md"
+                        class="border p-3 w-full rounded-md"
                         >
+                </div>
+                <div class="w-full flex justify-end">
+                    <input 
+                        type="submit" 
+                        value="Submit" 
+                        class="bg-green-600 rounded hover:bg-green-700 cursor-pointer w-full h-10 text-white">
                 </div>
             </form>
         </div>
