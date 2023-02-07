@@ -6,9 +6,9 @@ Home
 
 
 @section('title')
-    Home
+    Contenido de esta pagi
 @endsection
 
 @section('container')
-    Home container
+    Page Container
 @endsection
