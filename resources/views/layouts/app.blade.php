@@ -14,8 +14,8 @@
                 Devstagram
             </h1>
             <nav class="flex gap-2 items-center">
-                <a class="font-bold uppercase text-gray-200 text-sm" href="#">Sign up </a>
-                <a class="font-bold uppercase text-gray-200 text-sm" href="#">Sign in</a>
+                <a class="font-bold uppercase text-gray-200 text-sm" href="/signin">Sign in</a>
+                <a class="font-bold uppercase text-gray-200 text-sm" href="/signup">Sign up </a>
             </nav>
         </div>
         <main class="container mx-auto mt-10">

@@ -6,7 +6,7 @@ Home
 
 
 @section('title')
-    Contenido de esta pagi
+    Devstagram
 @endsection
 
 @section('container')
