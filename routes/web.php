@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +23,8 @@ Route::get('/', function () {
 Route::get('/signup', [RegisterController::class, 'index'])->name('signup');
 Route::post('/signup', [RegisterController::class, 'store'])->name('signup');
 
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'index'])->name('login');
 
-Route::get('/signin', function(){
-    return view('main');
-});
+Route::get('/reel',[PostController::class, 'index'])->name('reel.index')->middleware('auth');
+

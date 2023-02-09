@@ -18,7 +18,7 @@
                 <a class="font-bold uppercase text-gray-200 text-sm" href="{{ route('signup') }}">Sign up </a>
             </nav>
         </div>
-        <main class="container mx-auto mt-10">
+        <main class="container mx-auto mt-10 w-full">
             <h2 class="font-black text-center text-3xl mb-10 text-gray-300">
                 @yield('title')
             </h2>
