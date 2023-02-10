@@ -6,11 +6,11 @@
 
 @section('container')
 
-    <div class="md:fle">
+    <div class="md:flex">
         <div class="md:w-1/2">
             <img src="{{ asset('img/login.jpg') }}" alt="Login Image">
         </div>
-        <div class="md:w-4/12 md:justify-center bg-gray-300 p-6 rounded-lg shadow-lg shadow-white">
+        <div class="md:w-4/12 md:justify-center bg-gray-300 p-6 rounded-lg shadow-lg shadow-white flex items-center">
             <form action="{{ route('login') }}" method="POST">
                 @csrf
 
@@ -30,7 +30,9 @@
                         "
                         value="{{ old('email') }}"
                     />
+                    @error('email')
                     <p class="bg-red-400 rounded-md text-sm font-bold p-1 text-center">{{ $message }}</p>
+                    @enderror
 
                 </div>
 
@@ -50,19 +52,28 @@
                         "
                         value="{{ old('email') }}"
                     />
+                    
+                    @error('password')
                     <p class="bg-red-400 rounded-md text-sm font-bold p-1 text-center">{{ $message }}</p>
+                    @enderror
                 </div>
 
+                <div class="mb-5 w-full content-center">
+                    <input type="checkbox" name="remember" > <label>Remember</label>
+                </div>
+                
                 <div class="w-full flex justify-end">
                     <input 
                         type="submit" 
                         value="Submit" 
                         class="bg-green-600 rounded hover:bg-green-700 cursor-pointer w-full h-10 text-white">
                 </div>
+                @error('credentials')
+                    <p class="bg-red-400 text-sm rounded-sm font-bold">{{ $message }}</p>
+                @enderror
+
+
             </form>
-            @error('credentials')
-                <p class="bg-red-400 text-sm rounded-sm font-bold">{{$message}}</p>
-            @enderror
         </div>
     </div>
 @endsection

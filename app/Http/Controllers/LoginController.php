@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    //
-
     public function index(){
         return view('auth.login'); 
     }
@@ -20,14 +18,14 @@ class LoginController extends Controller
             "password" => ['required']
         ]);
 
-        if(Auth::attempt($credentials)){
-            $request->session()->regenerate();
-
-            return redirect()->intended( route('reel.index') );
+        if(!Auth::attempt($credentials, $request->remember)){
+            return back()->withErrors([
+                'credentials' => "The provided credential do not math with records"
+            ])->onlyInput('credentials');
         }
-
-        return back()->withErrors([
-            'credentials' => "The provided credential do not math with records"
-        ])->onlyInput('credentials');
+        
+        $request->session()->regenerate();
+        return redirect()->intended( route('reel.index') );
     }
+
 }
