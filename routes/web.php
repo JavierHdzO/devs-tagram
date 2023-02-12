@@ -29,5 +29,6 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
-Route::get('/reel',[PostController::class, 'index'])->name('reel.index')->middleware('auth');
+Route::get('/{user:username}',[PostController::class, 'index'])->name('reel.index')->middleware('auth');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create')->middleware('auth');
 
