@@ -14,7 +14,7 @@ class PostController extends Controller
         return view('layouts.dashboard', ['user' => $user]);
     }
 
-    public function create(Request $request){
-        dd('creado post');
+    public function create(){
+        return view('posts.create');
     }
 }

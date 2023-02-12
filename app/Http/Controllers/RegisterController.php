@@ -41,7 +41,7 @@ class RegisterController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended(route('reel.index'));
+            return redirect()->intended(route('posts.index'));
         }
 
         return redirect()->route('signin');

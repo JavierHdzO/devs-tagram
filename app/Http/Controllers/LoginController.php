@@ -25,7 +25,7 @@ class LoginController extends Controller
         }
         
         $request->session()->regenerate();
-        return redirect()->intended( route('reel.index') );
+        return redirect()->intended( route('posts.index') );
     }
 
 }
