@@ -25,7 +25,7 @@ class LoginController extends Controller
         }
         
         $request->session()->regenerate();
-        return redirect()->intended( route('posts.index') );
+        return redirect()->intended( route('posts.index', auth()->user()->username) );
     }
 
 }
