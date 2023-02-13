@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
     <title>Devstragram - @yield('title')</title>
 </head>
 <body class="bg-black"
@@ -22,13 +23,15 @@
                         </svg>
                         Create                         
                     </a>
-                    <p class="font-bold uppercase text-gray-200 text-md mr-15">
+                    <a class="font-bold uppercase text-gray-200 text-md mr-15"
+                        href="{{ route('posts.index', auth()->user()->username) }}"
+                        >
                         Hi,
                         <span class="text-sm">{{ auth()->user()->username }}</span>
-                    </p>
+                    </a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <input class="bg-green-700 rounded-lg px-5 py-2  font-bold uppercase text-gray-200 text-sm hover:bg-green-600" type="submit" value="Logout"/> 
+                        <input class="border-green-600 border-solid border-2 rounded-lg px-5 py-2  font-bold uppercase text-gray-200 text-sm hover:bg-green-600" type="submit" value="Logout"/> 
                     </form>
                 @endauth
 

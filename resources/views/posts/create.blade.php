@@ -7,7 +7,9 @@
 @section('container')
     <div class="md:flex md:items-center">
         <div class="md:w-1/2 px-10">
-            image here
+            <form action="/images" id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center text-white">
+
+            </form>
         </div>
         <div class="md:w-1/2 px-10 mt-10 bg-gray-300 p-6 rounded-lg shadow-lg shadow-white md:mt-0">
             <form action="{{ route('signup') }}" method="POST" >

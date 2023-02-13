@@ -3,6 +3,7 @@ import Dropzone from 'dropzone';
 Dropzone.autoDiscover = false;
 
 const fromDropzone = document.getElementById("dropzone");
+console.log({romDropzone});
 
 const dropzone = new Dropzone(fromDropzone, {
     dictDefaultMessage:'Upload image here',
