@@ -30,5 +30,26 @@
             </div>
         </div>
     </div>
+
+    <section class="container mx-auto mt-10">
+        <h2 class="text-4xl text-center font-black text-gray-400 my-10">Posts</h2>
+
+        @if ($posts->count())
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            @foreach ( $posts as $post )
+                <div class="text-white">
+                    <a>
+                        <img src="{{ asset('uploads') .'/'. $post->image }}" alt="{{ $post->title}} image" class="text-white">
+                    </a>
+                </div>
+            @endforeach
+        </div>
+        <div class="text-white flex items-center justify-center my-10">
+            {{ $posts->links() }}
+        </div>
+        @else
+            <p class="text-2xl text-gray-500 font-bold text-center">No posts</p>
+        @endif
+    </section>
 @endsection
 

@@ -10,8 +10,8 @@
         <div class="md:w-1/2">
             <img src="{{ asset('img/login.jpg') }}" alt="Login Image">
         </div>
-        <div class="md:w-4/12 md:justify-center bg-gray-300 p-6 rounded-lg shadow-lg shadow-white flex items-center">
-            <form action="{{ route('login') }}" method="POST">
+        <div class="md:w-4/12 md:justify-center bg-gray-300 p-6 rounded-lg shadow-lg shadow-white flex  items-center">
+            <form action="{{ route('login') }}" method="POST" class="w-full">
                 @csrf
 
                 <div class="mb-5">

@@ -15,8 +15,9 @@ class PostController extends Controller
     }
 
     public function index(User $user){
-    
-        return view('layouts.dashboard', ['user' => $user]);
+        
+        $posts = $user->posts()->simplePaginate(20);
+        return view('layouts.dashboard', ['user' => $user, 'posts' => $posts]);
     }
 
     
@@ -39,7 +40,18 @@ class PostController extends Controller
             'image' => $request->image,
             'user_id' => auth()->user()->id
         ]);
+
+        // $request->user()->posts()->create([
+        //     'title' => $request->title,
+        //     'description' => $request->description,
+        //     'image' => $request->image,
+        //     'user_id' => auth()->user()->id 
+        // ]);
         
-        return dd('prueba');
+        return redirect()->route('posts.index', auth()->user()->username);
+    }
+
+    public function show(){
+        return view('posts.show');
     }
 }
