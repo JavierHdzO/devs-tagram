@@ -10,14 +10,26 @@ const dropzone = new Dropzone(fromDropzone, {
     addRemoveLinks: true,
     dictRemoveFile: 'Delete file',
     maxFiles:1,
-    uploadMultiple: false
+    uploadMultiple: false,
+    init: function() {
+        const imageName = document.querySelector('[name="image"]').value.trim();
+        if(imageName){
+            const image = {};
+            image.size = 1234;
+            image.name = imageName;
+            this.options.addedfile.call(this, image);
+            this.options.thumbnail.call(this, image, `/uploads/${image.name}`);
+
+            image.previewElement.classList.add('dz-success', 'dz-complete');
+        }
+    }
 });
 
 
 dropzone.on('success', (file, response) =>{
-    console.log(response);
+    document.querySelector('[name="image"]').value = response.image;
 });
 
-dropzone.on('sending', ( file, xhr, formData ) => {
-    console.log(formData);
+dropzone.on('removedfile', ( file ) =>{
+    document.querySelector('[name="image"]').value = "";
 });

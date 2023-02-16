@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -41,9 +41,10 @@ class RegisterController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended(route('posts.index'));
+            return redirect()->intended(route('posts.index', auth()->user()->username));
         }
 
         return redirect()->route('signin');
     }
 }
+
