@@ -5,7 +5,7 @@
 @endsection
 
 @section('container')
-    <div class="container mx-auto flex h-3/5" >
+    <div class="container mx-auto md:flex h-3/5" >
         <div class="md:w-1/2 ">
             <img src="{{asset('uploads').'/'.$post->image}}" alt="{{ $post->title }}" class="bg-contain bg-center">
             <div class="p-3">
@@ -26,7 +26,8 @@
             
             <div class="shadow bg-gray-800 p-5 mb-5 rounded-xl">
                 <p class="text-xl font-bold text-center mb-4 text-gray-400">Add a comment</p>
-                <form action="">
+                <form action="{{ route('comment.store', [$user, $post]) }}" method="POST">
+                    @csrf
                     <div class="mb-5">
                         <label id="comment" class="mb-2 block uppercase text-gray-500 font-bold" >
                             Description
@@ -36,7 +37,7 @@
                             name="comment" 
                             id="comment" 
                             placeholder="Write a comment"
-                            class="border p-3 w-full rounded-md bg-slate-700
+                            class="border p-3 w-full rounded-md bg-slate-700 text-white
                                 @error('comment')
                                 border-red-500
                                 @enderror
@@ -53,6 +54,11 @@
                             class="bg-green-600 rounded hover:bg-green-700 cursor-pointer w-full h-10 text-white">
                             
                     </div>
+                    @if (session('message'))
+                        <div class="bg-green-600 rounded-lg text-sm mt-5 py-2 text-white text-center font-bold">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                 </form>
             </div>
             @endauth
