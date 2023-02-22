@@ -29,4 +29,12 @@ class Post extends Model
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+
+    public function reactions(){
+        return $this->hasMany(Reaction::class);
+    }
+
+    public function checkReaction(User $user){
+        return $this->reactions->contains('user_id', $user->id);
+    }
 }

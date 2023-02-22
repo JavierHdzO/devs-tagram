@@ -6,6 +6,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ReactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,4 +41,7 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 Route::post('/{user:username}/posts/{post}', [CommentController::class, 'store'])->name('comment.store');
 
 Route::post('/images', [ImageController::class, 'store'])->name('images.store')->middleware('auth');
+
+Route::post('/post/{post}/reaction',[ReactionController::class, 'store'])->name('post.reaction.store');
+Route::delete('/post/{post}/reaction',[ReactionController::class, 'destroy'])->name('post.reaction.destroy');
 
