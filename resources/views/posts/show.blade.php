@@ -19,11 +19,26 @@
                     {{ $post->description }}
                 </p>
             </div>
+
+            @auth
+                @if ($post->user_id === auth()->user()->id)
+                
+                    <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <div class="w-full">
+                            <input 
+                            type="submit" 
+                            value="Delete Post" 
+                            class="bg-red-600 hover:bg-red-700 rounded cursor-pointer h-10 w-auto px-3 py-2 text-white mt-4">
+                            
+                        </div>
+                    </form>
+                @endif
+            @endauth
         </div>
         <div class="md:w-1/2 p-5">
-            @auth
-                
-            
+            @auth    
             <div class="shadow bg-gray-800 p-5 mb-5 rounded-xl">
                 <p class="text-xl font-bold text-center mb-4 text-gray-400">Add a comment</p>
                 <form action="{{ route('comment.store', [$user, $post]) }}" method="POST">
@@ -62,6 +77,23 @@
                 </form>
             </div>
             @endauth
+            <div class="shadow bg-gray-800 mb-5 max-h-96 rounded-xl overflow-y-scroll">
+                @if ($comments->count())
+                    @foreach ( $comments as $comment )
+                        <div class="p-5 border-gray-700 rounded-sm border-b font-bold">
+                            <a 
+                                href="{{ route("posts.index", $comment->user) }}"
+                                class="text-white text-lg">
+                                {{ $comment->user->username }}
+                            </a>
+                            <p class="text-gray-300">{{ $comment->comment }}</p>
+                            <p class="text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</p>
+                        </div>
+                    @endforeach
+                @else
+                    <p class="p-10 text-center">No comments</p>
+                @endif
+            </div>
         </div>
     </div>
 @endsection

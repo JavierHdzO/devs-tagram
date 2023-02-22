@@ -56,7 +56,20 @@ class PostController extends Controller
 
         return view('posts.show', [
             'post' => $post,
-            'user' => $user
+            'user' => $user,
+            'comments' => $post->comments
         ]);
+    }
+
+    public function destroy(Post $post){
+
+        if(!$this->authorize('delete',$post))
+            return back()->withErrors([
+                'error'=>'No permission required'
+            ]);
+        
+        $post->delete();
+        
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
