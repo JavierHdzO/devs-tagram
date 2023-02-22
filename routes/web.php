@@ -6,6 +6,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,3 +46,7 @@ Route::post('/images', [ImageController::class, 'store'])->name('images.store')-
 Route::post('/post/{post}/reaction',[ReactionController::class, 'store'])->name('post.reaction.store');
 Route::delete('/post/{post}/reaction',[ReactionController::class, 'destroy'])->name('post.reaction.destroy');
 
+
+
+Route::get('/profile/edit', [ProfileController::class, 'index'])->name('profile.index');
+Route::post('/profile/edit', [ProfileController::class, 'store'])->name('profile.store');
