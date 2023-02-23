@@ -57,7 +57,6 @@
                                 >
                             </form>
                         @else
-                            
                             <form action="{{ route('user.follow', $user) }}" method="POST">
                                 @csrf
                                 <input 

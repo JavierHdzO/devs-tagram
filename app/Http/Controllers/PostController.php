@@ -17,7 +17,7 @@ class PostController extends Controller
 
     public function index(User $user){
         
-        $posts = $user->posts()->simplePaginate(20);
+        $posts = $user->posts()->latest()->simplePaginate(20);
         return view('layouts.dashboard', ['user' => $user, 'posts' => $posts]);
     }
 
