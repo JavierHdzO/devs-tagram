@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
@@ -50,3 +51,6 @@ Route::delete('/post/{post}/reaction',[ReactionController::class, 'destroy'])->n
 
 Route::get('/profile/edit', [ProfileController::class, 'index'])->name('profile.index');
 Route::post('/profile/edit', [ProfileController::class, 'store'])->name('profile.store');
+
+Route::post('/{user:username}/follow', [FollowerController::class,'store'])->name('user.follow');
+Route::delete('/{user:username}/unfollow', [FollowerController::class,'destroy'])->name('user.unfollow');

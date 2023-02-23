@@ -32,17 +32,43 @@
                 </div>
 
                 <p class="text-gray-500 text-md mb-3 mt-1 font-bold">
-                    0
-                    <span class="font-normal"> Followers</span>
+                    {{ $user->followers->count() }}
+                    <span class="font-normal"> @choice('Follower|Followers', $user->followers->count()) </span>
                 </p>
                 <p class="text-gray-500 text-md mb-3 mt-1 font-bold">
-                    0
-                    <span class="font-normal"> Following</span>
+                    {{ $user->followings->count() }}
+                    <span class="font-normal"> Following </span>
                 </p>
                 <p class="text-gray-500 text-md mb-3 mt-1 font-bold">
-                    0
+                    {{ $user->posts->count() }}
                     <span class="font-normal"> Posts</span>
                 </p>
+
+                @auth
+                    @if($user->id !== auth()->user()->id)
+                        @if ($user->checkFollower( auth()->user() ))
+                            <form action="{{ route('user.unfollow', $user) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input 
+                                type="submit"
+                                value="Unfollow"
+                                class="border-2 border-red-600 hover:bg-red-700 hover:shadow text-white text-sm px-3 py-2 rounded-xl"
+                                >
+                            </form>
+                        @else
+                            
+                            <form action="{{ route('user.follow', $user) }}" method="POST">
+                                @csrf
+                                <input 
+                                type="submit"
+                                value="Follow"
+                                class="border-2 border-green-600 hover:bg-green-700 hover:shadow text-white text-sm px-3 py-2 rounded-xl"
+                                >
+                            </form>
+                        @endif
+                    @endif
+                @endauth
             </div>
         </div>
     </div>
