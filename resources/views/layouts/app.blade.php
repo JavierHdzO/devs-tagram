@@ -10,6 +10,7 @@
     @vite('resources/css/app.css')
 
     <title>Devstragram - @yield('title')</title>
+    @livewireStyles
 </head>
 <body class="bg-black"
     <header class="p-5 border-b  shadow">
@@ -57,6 +58,6 @@
             @endphp --}}
         </footer>
     </header>
-    
+    @livewireScripts
 </body>
 </html>

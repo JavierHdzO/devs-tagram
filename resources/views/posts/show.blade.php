@@ -10,7 +10,11 @@
             <img src="{{asset('uploads').'/'.$post->image}}" alt="{{ $post->title }}" class="bg-contain bg-center">
             <div class="p-3 flex items-center gap-4">
                 @auth 
-                    @if($post->checkReaction(auth()->user()))
+                    
+            
+                    <livewire:like-post :post="$post" />
+
+                    {{-- @if($post->checkReaction(auth()->user()))
                         <form action="{{ route('post.reaction.destroy', $post) }}" method="POST">
                             @method('DELETE')
                             @csrf
@@ -35,10 +39,10 @@
                             </div>
                             
                         </form>
-                    @endif
+                    @endif --}}
                 @endauth
 
-                <p class="text-gray-500">{{ $post->reactions->count() }} Likes</p>
+                
             </div>
 
             <div>
